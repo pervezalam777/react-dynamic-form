@@ -2,8 +2,27 @@ import React from 'react';
 
 import classes from './Input.module.css';
 
+const RadioGroup = (props) => {
+
+    return  props.group.map(element => (
+        <label key={element.elementConfig.value} 
+            className={classes.RadioContainer}>
+            {element.label} 
+            <input
+                data-id={props.elementId}
+                className={classes.Radio}
+                {...element.elementConfig}
+                onChange={props.changed} />
+                <span className={classes.Checkmark}></span> 
+                
+        </label>
+        
+    ));
+}
+
 const input = ( props ) => {
     let inputElement = null;
+    let containerClasses = [classes.Input];
     const inputClasses = [classes.InputElement];
 
     if (props.invalid && props.shouldValidate && props.touched) {
@@ -42,6 +61,10 @@ const input = ( props ) => {
                 </select>
             );
             break;
+        case ('inputRadio'):
+            containerClasses.push(classes.Radio)
+            inputElement = <RadioGroup {...props} />
+            break;
         default:
             inputElement = <input
                 data-id={props.elementId}
@@ -52,9 +75,11 @@ const input = ( props ) => {
     }
 
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
-            {inputElement}
+        <div className={containerClasses.join(' ')}>
+            <label >
+                <span className={classes.Label}>{props.label}</span>
+                {inputElement}
+            </label>
         </div>
     );
 

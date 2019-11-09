@@ -27,6 +27,33 @@ export const USER_FORM_DATA = {
             valid: false,
             touched: false
         },
+        gender: {
+            elementType: 'inputRadio',
+            group: [
+                {
+                    elementConfig: {
+                        type: 'radio',
+                        name: 'gender',
+                        value: 'male'
+                    },
+                    label: 'Male'
+                },
+                {
+                    elementConfig: {
+                        type: 'radio',
+                        name: 'gender',
+                        value: 'female'
+                    },
+                    label: 'Female'
+                }
+            ],
+            value: '',
+            validation: {
+                required: true
+            },
+            valid: false,
+            touched: false
+        },
         street: {
             elementType: 'input',
             elementConfig: {

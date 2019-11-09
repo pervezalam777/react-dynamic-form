@@ -37,6 +37,7 @@ export class FormBuilder extends Component {
                         shouldValidate={element.config.validation}
                         touched={element.config.touched}
                         elementId={element.id}
+                        group={element.config.group}
                         changed={this.elementChangedHandler} />
                 ))}
                 <Button btnType="Success" disabled={!data.formIsValid}>Submit</Button>
