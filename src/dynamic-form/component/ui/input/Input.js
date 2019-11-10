@@ -13,10 +13,8 @@ const RadioGroup = (props) => {
                 className={classes.Radio}
                 {...element.elementConfig}
                 onChange={props.changed} />
-                <span className={classes.Checkmark}></span> 
-                
+                <span className={classes.Checkmark}></span>    
         </label>
-        
     ));
 }
 

@@ -9,6 +9,12 @@ just config file
 > npm start
 ```
 
+## Test dependency
+```bash
+> npm i enzyme enzyme-adapter-react-16 react-test-renderer
+```
+
+
 ## Pending task
 * Support for radio button element
 * Support for checkbox element
