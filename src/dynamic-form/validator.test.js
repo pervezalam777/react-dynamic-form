@@ -1,7 +1,6 @@
-import React from 'react'
 import {configure, shallow} from 'enzyme';
 import Adapter from "enzyme-adapter-react-16";
-import {checkValidity} from "./index"
+import {performValidity as checkValidity} from "./validator"
 
 configure({adapter: new Adapter()});
 
@@ -68,7 +67,7 @@ describe("Form validator", () => {
     })
 
     it('should return true if the input value is a number', ()=>{
-        let validNumbers = ['12345', '234.5', '1.00001'];
+        let validNumbers = ['12345', '234.5', '1.00001', '110062'];
         let isValid = true
         validNumbers.forEach(num => {
             isValid = checkValidity(num, numericRule);

@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {USER_FORM_DATA} from "./config"
-import {FormBuilder, getUpdateFormState} from "../../dynamic-form"
+import {FormBuilder, getUpdateFormState, checkValidity} from "../../dynamic-form"
 
 import classes from './user.module.css';
 
@@ -28,7 +28,8 @@ export class UserFrom extends Component {
         const shallowClone = {
             ...this.state.form
         };
-        const newState = getUpdateFormState(shallowClone, event, inputIdentifier)
+        const newState = getUpdateFormState(shallowClone, event, 
+                                    inputIdentifier, checkValidity);
         this.setState(newState);
     }
 
