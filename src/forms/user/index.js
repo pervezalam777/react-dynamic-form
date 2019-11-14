@@ -28,8 +28,14 @@ export class UserFrom extends Component {
         const shallowClone = {
             ...this.state.form
         };
-        const newState = getUpdateFormState(shallowClone, event, 
-                                    inputIdentifier, checkValidity);
+        //const newState = getUpdateFormState(shallowClone, event, 
+        //                            inputIdentifier, checkValidity);
+        const newState = getUpdateFormState({
+            formData:shallowClone, 
+            value:event.target.value, 
+            id:inputIdentifier, 
+            validator:checkValidity
+        });                            
         this.setState(newState);
     }
 

@@ -1,17 +1,22 @@
-export const updateState = (updatedForm, event, 
-                            inputIdentifier, checkValidity) => {
-    const updatedFormElement = { 
-        ...updatedForm[inputIdentifier]
-    };
-    updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
-    updatedFormElement.touched = true;
-    updatedForm[inputIdentifier] = updatedFormElement;
+
+export const updateState = ({formData, value, id, validator}) => {
+
+    formData[id] = updateFormItem(formData[id], value, 
+                        validator(value, formData[id].validation));
     
     let formIsValid = true;
-    for (let inputIdentifier in updatedForm) {
-        formIsValid = updatedForm[inputIdentifier].valid && formIsValid;
+    for (let id in formData) {
+        formIsValid = formData[id].valid && formIsValid;
     }
 
-    return {form: updatedForm, formIsValid: formIsValid}
+    return {form: formData, formIsValid: formIsValid}
 }
+
+const updateFormItem = (formItem, value, isValid) => {
+    let item = {...formItem }
+    item.value = value;
+    item.valid = isValid;
+    item.touched = true;
+    return item
+}
+

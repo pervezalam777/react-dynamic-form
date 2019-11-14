@@ -30,8 +30,7 @@
         "lines": 90,
         "statements": 90
       }
-    },
-    "coverageReporters": ["text"]
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
