@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './Input.module.css';
 
 const RadioGroup = (props) => {
-
     return  props.group.map(element => (
         <label key={element.elementConfig.value} 
             className={classes.RadioContainer}>

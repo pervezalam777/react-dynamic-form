@@ -5,16 +5,6 @@ import Input from "./Input"
 
 configure({adapter: new Adapter()});
 
-const intputTextObject = {
-    elementType: 'input',
-    elementId:"text1",
-    elementConfig: {
-        type: 'text',
-        placeholder: 'Your Name'
-    },
-    value: 'Pervez',
-}
-
 describe("Input component", () => {
     let wrapper;
     beforeEach(()=>{
@@ -29,3 +19,13 @@ describe("Input component", () => {
         //expect(wrapper.placeholder).toBe('Your Name')
     })
 })
+
+const intputTextObject = {
+    elementType: 'input',
+    elementId:"text1",
+    elementConfig: {
+        type: 'text',
+        placeholder: 'Your Name'
+    },
+    value: 'Pervez',
+}
