@@ -94,7 +94,7 @@ export const USER_FORM_DATA = {
                     {value: 'england', displayValue:'United Kingdom'}
                 ]
             },
-            value: '',
+            value: 'india',
             validation: {},
             valid: true
         }

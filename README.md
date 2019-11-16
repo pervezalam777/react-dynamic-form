@@ -14,7 +14,7 @@ just config file
 > npm i enzyme enzyme-adapter-react-16 react-test-renderer
 ```
 
-# Use following script for generating code coverage
+## Use following script for generating code coverage
 ```bash
 > npm run test -- --coverage --watchAll=false
 ```
