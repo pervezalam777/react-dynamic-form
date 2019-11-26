@@ -11,13 +11,45 @@ const RadioGroup = (props) => {
                 data-id={props.elementId}
                 className={classes.Radio}
                 {...element.elementConfig}
-                onChange={props.changed} />
+                onChange={props.changed}/>
                 <span className={classes.Checkmark}></span>    
         </label>
     ));
 }
 
-const input = ( props ) => {
+const TextArea = (props) => {
+    return (<textarea
+        data-id={props.elementId}
+        className={props.inputClasses}
+        {...props.elementConfig}
+        value={props.value}
+        onChange={props.changed} />);
+}
+
+const DropDown = (props) => {
+    return (<select
+        data-id={props.elementId}
+        className={props.inputClasses}
+        value={props.value}
+        onChange={props.changed}>
+        {props.elementConfig.options.map(option => (
+            <option key={option.value} value={option.value}>
+                {option.displayValue}
+            </option>
+        ))}
+    </select>);
+}
+
+const InputText = (props) => {
+    return (<input
+        data-id={props.elementId}
+        className={props.inputClasses}
+        {...props.elementConfig}
+        onChange={props.changed}
+        value={props.value} />);
+}
+
+const Input = ( props ) => {
     let inputElement = null;
     let containerClasses = [classes.Input];
     const inputClasses = [classes.InputElement];
@@ -28,47 +60,24 @@ const input = ( props ) => {
 
     switch ( props.elementType ) {
         case ( 'input' ):
-            inputElement = <input
-                data-id={props.elementId}
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+            inputElement = <InputText {...props} 
+                    inputClasses={inputClasses.join(' ')} />;
             break;
         case ( 'textarea' ):
-            inputElement = <textarea
-                data-id={props.elementId}
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+            inputElement = <TextArea {...props} 
+                    inputClasses={inputClasses.join(' ')} />;
             break;
         case ( 'select' ):
-            inputElement = (
-                <select
-                    data-id={props.elementId}
-                    className={inputClasses.join(' ')}
-                    value={props.value}
-                    onChange={props.changed}>
-                    {props.elementConfig.options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.displayValue}
-                        </option>
-                    ))}
-                </select>
-            );
+            inputElement = <DropDown {...props} 
+                    inputClasses={inputClasses.join(' ')} />;
             break;
         case ('inputRadio'):
             containerClasses.push(classes.Radio)
-            inputElement = <RadioGroup {...props} />
+            inputElement = <RadioGroup {...props} />;
             break;
         default:
-            inputElement = <input
-                data-id={props.elementId}
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed} />;
+            inputElement = <InputText {...props} 
+            inputClasses={inputClasses.join(' ')} />;
     }
 
     return (
@@ -82,4 +91,4 @@ const input = ( props ) => {
 
 };
 
-export default input;
+export default Input;

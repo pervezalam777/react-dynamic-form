@@ -17,6 +17,8 @@ just config file
 ## Use following script for generating code coverage
 ```bash
 > npm run test -- --coverage --watchAll=false
+# or
+> npm run coverage
 ```
 
 ## Runnig application with docker

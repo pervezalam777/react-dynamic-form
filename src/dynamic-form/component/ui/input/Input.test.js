@@ -12,35 +12,68 @@ describe("Input component", () => {
     })
     it("Should render input type text with provided values", () => {
         wrapper.setProps(intputTextObject)
-        let input = wrapper.find('input').at(0);
-        expect(input).toBeTruthy();
-        let props = input.props();
-        expect(props.value).toEqual('Pervez');
-        expect(props.placeholder).toEqual('Your Name');
-        expect(props["data-id"]).toEqual('text1')
+        let html = wrapper.html();
+        expect(html).toBeTruthy();
+        expect(html.includes('<input')).toBeTruthy();
+        expect(html.includes('value="Pervez"')).toBeTruthy();
+        expect(html.includes('placeholder="Your Name"')).toBeTruthy();
+        expect(html.includes('data-id="text1"')).toBeTruthy();
     })
 
     it("should render text area with provided values", ()=>{
         wrapper.setProps(inputTextAreaObject)
-        let input = wrapper.find('textarea').at(0);
-        expect(input).toBeTruthy();
-        let props = input.props();
-        expect(props.value).toEqual('Dummy comments');
-        expect(props.placeholder).toEqual('Comments');
-        expect(props["data-id"]).toEqual('ta1')
+        let html = wrapper.html();
+        expect(html).toBeTruthy();
+        expect(html.includes('<textarea')).toBeTruthy();
+        expect(html.includes('Dummy comments')).toBeTruthy();
+        expect(html.includes('placeholder="Comments"')).toBeTruthy();
+        expect(html.includes('data-id="ta1"')).toBeTruthy();
     })
 
-    it("should render dropdown tag with provided values", ()=>{
-        wrapper.setProps(inputSelectObject)
-        let input = wrapper.find('select').at(0);
-        expect(input).toBeTruthy();
-        let props = input.props();
-        expect(props.value).toEqual('india');
-        expect(props.children[0].key).toEqual('india');
-        expect(props.children[1].key).toEqual('australia');
-        expect(props["data-id"]).toEqual('sel1')
+    it("should render dropdown with provided values", ()=>{
+        wrapper.setProps(inputSelectObject);
+        let html = wrapper.html();
+        expect(html).toBeTruthy();
+        expect(html.includes('<select')).toBeTruthy();
+        expect(html.includes('<option')).toBeTruthy();
+        expect(html.includes('value="india"')).toBeTruthy();
+        expect(html.includes('value="australia"')).toBeTruthy();
+        expect(html.includes('data-id="sel1"')).toBeTruthy();
+    })
+
+    it("should render radio group with the provided values", () => {
+        wrapper.setProps(radioGroupObject);
+        let html = wrapper.html();
+        expect(html).toBeTruthy();
+        expect(html.includes('data-id="radio"')).toBeTruthy();
+        expect(html.includes('name="gender"')).toBeTruthy();
+        expect(html.includes('value="male"')).toBeTruthy();
+        expect(html.includes('value="female"')).toBeTruthy();
+        expect(html.includes('type="radio"')).toBeTruthy();
+    })
+
+    it("should add invalid class if element value is not a valid value", ()=>{
+        wrapper.setProps(InvalidIntputTextObject);
+        let html = wrapper.html();
+        expect(html).toBeTruthy();
+        expect(html.includes('<input')).toBeTruthy();
+        expect(html.includes('Invalid')).toBeTruthy();
     })
 })
+
+const InvalidIntputTextObject = {
+    elementType: 'input',
+    elementId:"text1",
+    elementConfig: {
+        type: 'text',
+        placeholder: 'Your Name'
+    },
+    invalid:true,
+    shouldValidate:true,
+    touched:true,
+    changed:function(){},
+    value: '',
+}
 
 const intputTextObject = {
     elementType: 'input',
@@ -49,6 +82,7 @@ const intputTextObject = {
         type: 'text',
         placeholder: 'Your Name'
     },
+    changed:function(){},
     value: 'Pervez',
 }
 
@@ -59,6 +93,7 @@ const inputTextAreaObject = {
         type: 'text',
         placeholder: 'Comments'
     },
+    changed:function(){},
     value: 'Dummy comments',
 }
 
@@ -71,6 +106,32 @@ const inputSelectObject = {
             {value: 'australia', displayValue: 'Australia'}
         ]
     },
+    changed:function(){},
     value: 'india'
 
+}
+
+const radioGroupObject = {
+    elementType: 'inputRadio',
+    elementId: "radio",
+    group: [
+        {
+            elementConfig: {
+                type: 'radio',
+                name: 'gender',
+                value: 'male'
+            },
+            label: 'Male'
+        },
+        {
+            elementConfig: {
+                type: 'radio',
+                name: 'gender',
+                value: 'female'
+            },
+            label: 'Female'
+        }
+    ],
+    changed:function(){},
+    value: '',
 }

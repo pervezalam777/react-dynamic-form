@@ -47,7 +47,7 @@ export const USER_FORM_DATA = {
                     label: 'Female'
                 }
             ],
-            value: '',
+            value: 'male',
             validation: {
                 required: true
             },
