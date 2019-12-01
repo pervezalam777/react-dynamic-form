@@ -1,6 +1,10 @@
-import React, {Component} from "react"
-import {USER_FORM_DATA} from "./config"
-import {FormBuilder, getUpdateFormState, checkValidity} from "../../dynamic-form"
+import React, {Component} from "react";
+import {USER_FORM_DATA} from "./config";
+import {
+    FormBuilder, 
+    getUpdateFormState, 
+    checkValidity
+} from "../../dynamic-form";
 
 import classes from './user.module.css';
 
@@ -10,8 +14,8 @@ export class UserFrom extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         const formData = {};
-        for (let formElementIdentifier in this.state.form) {
-            formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
+        for (let element in this.state.form) {
+            formData[element] = this.state.form[element].value;
         }
         console.log(formData);
     }
@@ -28,8 +32,6 @@ export class UserFrom extends Component {
         const shallowClone = {
             ...this.state.form
         };
-        //const newState = getUpdateFormState(shallowClone, event, 
-        //                            inputIdentifier, checkValidity);
         const newState = getUpdateFormState({
             formData:shallowClone, 
             value:event.target.value, 

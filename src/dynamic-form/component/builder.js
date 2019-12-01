@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 
-import Input from "./component/ui/input/Input"
-import Button from "./component/ui/button/Button"
+import Input from "./ui/input/Input"
+import Button from "./ui/button/Button"
 
 export class Builder extends Component {
    
