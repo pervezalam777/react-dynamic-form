@@ -1,6 +1,6 @@
-import {performValidity} from "./validator"
-import {updateState} from "./state"
-import {Builder} from "./builder"
+import {performValidity} from "./component/bl/validator"
+import {updateState} from "./component/bl/state"
+import {Builder} from "./component/builder"
 
 export const FormBuilder = Builder;
 export const getUpdateFormState = updateState
