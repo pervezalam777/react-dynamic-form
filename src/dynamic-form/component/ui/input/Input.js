@@ -17,6 +17,22 @@ const RadioGroup = (props) => {
     ));
 }
 
+const CheckBox = (props) => {
+    return (
+        <label htmlFor={props.elementConfig.elementId} 
+            className={classes.RadioContainer}>
+            {props.checkBoxLabel}
+            <input
+                id={props.elementId}
+                data-id={props.elementId}
+                className={classes.Radio}
+                {...props.elementConfig}
+                onChange={props.changed}/>
+                <span className={classes.Checkmark}></span>    
+        </label>
+    );
+}
+
 const TextArea = (props) => {
     return (<textarea
         data-id={props.elementId}
@@ -74,6 +90,10 @@ const Input = ( props ) => {
         case ('inputRadio'):
             containerClasses.push(classes.Radio)
             inputElement = <RadioGroup {...props} />;
+            break;
+        case ('inputCheckbox'):
+            containerClasses.push(classes.Radio)
+            inputElement = <CheckBox {...props} />;
             break;
         default:
             inputElement = <InputText {...props} 

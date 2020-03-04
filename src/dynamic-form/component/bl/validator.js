@@ -1,6 +1,8 @@
 
-export const performValidity = (value, rules) => {
+export const performValidity = (value, rules, checked) => {
     if (!rules) return true;
+
+    if(rules.required && checked !== undefined && checked === false) return false;
     
     if (rules.required && value.trim() === '') return false;
 

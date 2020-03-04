@@ -28,7 +28,7 @@ export class Builder extends Component {
             <form onSubmit={onSubmitted}>
                 {formElementsArray.map(element => (
                     <Input 
-                        key={element.id}
+                        key={element.id} 
                         label={element.config.label}
                         elementType={element.config.elementType}
                         elementConfig={element.config.elementConfig}
@@ -38,6 +38,7 @@ export class Builder extends Component {
                         touched={element.config.touched}
                         elementId={element.id}
                         group={element.config.group}
+                        checkBoxLabel={element.config.checkBoxLabel}
                         changed={this.elementChangedHandler} />
                 ))}
                 <Button btnType="Success" disabled={!data.formIsValid}>Submit</Button>

@@ -54,11 +54,24 @@ export const USER_FORM_DATA = {
             valid: false,
             touched: false
         },
-        street: {
+        house: {
             elementType: 'input',
             elementConfig: {
                 type: 'text',
-                placeholder: 'Street'
+                placeholder: 'House No'
+            },
+            value: '',
+            validation: {
+                required: true
+            },
+            valid: false,
+            touched: false
+        },
+        locality: {
+            elementType: 'input',
+            elementConfig: {
+                type: 'text',
+                placeholder: 'locality'
             },
             value: '',
             validation: {
@@ -97,7 +110,23 @@ export const USER_FORM_DATA = {
             value: 'india',
             validation: {},
             valid: true
-        }
+        },
+        agree: {
+            elementType: 'inputCheckbox',
+            elementConfig: {
+                type: 'checkbox',
+                name:"agree",
+                value:"agreed",
+                checked:false
+            },
+            checkBoxLabel:"Agree",
+            value: "",
+            validation: {
+                required: true
+            },
+            valid: false,
+            touched: false
+        },
         
     },
     formIsValid: false

@@ -34,11 +34,16 @@ export class UserFrom extends Component {
         };
         const newState = getUpdateFormState({
             formData:shallowClone, 
-            value:event.target.value, 
+            value:event.target.value,
+            checked:this.getCheckValue(event),
             id:inputIdentifier, 
             validator:checkValidity
         });                            
         this.setState(newState);
+    }
+
+    getCheckValue = ({target:{type, checked}}) => {
+        return type === "checkbox" ? checked : undefined;
     }
 
     render(){
