@@ -1,37 +1,8 @@
 import React from 'react';
-
+import RadioGroup from "../radio/RadioGroup"
+import CheckBox from "../checkbox/CheckBox"
 import classes from './Input.module.css';
 
-const RadioGroup = (props) => {
-    return  props.group.map(element => (
-        <label key={element.elementConfig.value} 
-            className={classes.RadioContainer}>
-            {element.label} 
-            <input
-                data-id={props.elementId}
-                className={classes.Radio}
-                {...element.elementConfig}
-                onChange={props.changed}/>
-                <span className={classes.Checkmark}></span>    
-        </label>
-    ));
-}
-
-const CheckBox = (props) => {
-    return (
-        <label htmlFor={props.elementConfig.elementId} 
-            className={classes.RadioContainer}>
-            {props.checkBoxLabel}
-            <input
-                id={props.elementId}
-                data-id={props.elementId}
-                className={classes.Radio}
-                {...props.elementConfig}
-                onChange={props.changed}/>
-                <span className={classes.Checkmark}></span>    
-        </label>
-    );
-}
 
 const TextArea = (props) => {
     return (<textarea
@@ -88,11 +59,11 @@ const Input = ( props ) => {
                     inputClasses={inputClasses.join(' ')} />;
             break;
         case ('inputRadio'):
-            containerClasses.push(classes.Radio)
+            containerClasses.push(classes.textAlignleft)
             inputElement = <RadioGroup {...props} />;
             break;
         case ('inputCheckbox'):
-            containerClasses.push(classes.Radio)
+            containerClasses.push(classes.textAlignleft)
             inputElement = <CheckBox {...props} />;
             break;
         default:
